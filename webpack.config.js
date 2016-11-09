@@ -11,25 +11,20 @@ module.exports = {
     },
     module: {
         loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: "style!css"
-            },
-            {
-                test: /\.less/,
-                loader: 'style-loader!css-loader!less-loader'
-            },
+            // {
+            //     test: /\.css$/,
+            //     loader: "style!css"
+            // },
+            // {
+            //     test: /\.less/,
+            //     loader: 'style-loader!css-loader!less-loader'
+            // },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['es2015','react']
                 }
             }
         ]

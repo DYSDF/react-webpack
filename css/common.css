@@ -1,0 +1,75 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: calc(100vw / 375 * 20);
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.icon:before {
+    content: " ";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    vertical-align: text-top;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.icon_index:before {
+    background-image: url(../image/icon/store_index.png);
+}
+
+.icon_index_active:before {
+    background-image: url(../image/icon/store_index_active.png);
+}
+
+.icon_car:before {
+    background-image: url(../image/icon/store_cart.png);
+}
+
+.icon_car_active:before {
+    background-image: url(../image/icon/store_car_active.png);
+}
+
+.icon_me:before {
+    background-image: url(../image/icon/store_me.png);
+}
+
+.icon_me_active:before {
+    background-image: url(../image/icon/store_me_active.png);
+}
+
+.icon_wmw:before {
+    background-image: url(../image/icon/wmw_icon.png);
+}
+
+.icon_search:before {
+    background-image: url(../image/icon/store_search.png);
+}
+
+.icon_back:before {
+    background-image: url(../image/icon/store_back.png);
+}
+

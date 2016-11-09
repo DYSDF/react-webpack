@@ -1,38 +1,38 @@
 // 应用的主入口
-
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Link, Route, IndexRoute, browserHistory} from 'react-router';
+import {Router, Link, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 
-import HelloHandler from './hello.js';
-import Timer from './timer.js';
-import Menu from './menu.js';
-import Data from './data.js';
+import Index from './components/index';
+import ShopCar from  "./components/ShopCar";
+import AboutMe from  "./components/AboutMe";
 
 
-let App = React.createClass({
+class App extends React.Component {
     render() {
         return (
-            <div className="nav">
-                <Link to="/hello" className="hellolink">Say Hello</Link>
-                <Link to="/timer" className="timerlink">Timer</Link>
-                <Link to="/data" className="datalink">Data Growth</Link>
+            <div className="tab_contain">
                 {this.props.children}
+                <div className="tab_bar">
+                    <Link to="/index" className="tab_bar_item" activeClassName="active"><i className="icon icon_index"/>首页</Link>
+                    <Link to="/shopCar" className="tab_bar_item" activeClassName="active"><i className="icon icon_car"/>购物车</Link>
+                    <Link to="/aboutMe" className="tab_bar_item" activeClassName="active"><i className="icon icon_me"/>个人中心</Link>
+                </div>
             </div>
-        );
+        )
     }
-});
-
+}
 
 render(
     (<Router history={browserHistory}>
         <Route path="/" component={App}>
-            <Route path="/hello" component={HelloHandler}/>
-            <Route path="/timer" component={Timer}/>
-            <Route path="/data" component={Data}/>
+            <IndexRedirect to="/index"/>
+            <Route path="/index" component={Index}/>
+            <Route path="/shopCar" component={ShopCar}/>
+            <Route path="/aboutMe" component={AboutMe}/>
         </Route>
     </Router>),
-    document.getElementById('content')
+    document.getElementById("container")
 );
 
 
