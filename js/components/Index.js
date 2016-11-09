@@ -5,14 +5,14 @@
 import React from "react"
 
 import SearchBar from "./index/SearchBar"
-import Rotation from "./index/Rotation"
+import Swiper from "./index/Swiper"
 
 class Index extends React.Component {
     render() {
         return (
             <div className="tab_body">
                 <SearchBar/>
-                <Rotation/>
+                <Swiper/>
             </div>
         )
     }
