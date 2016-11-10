@@ -104,6 +104,8 @@
     display: -webkit-box;
     width: 100%;
     height: 100%;
+    -webkit-transition: transform 400ms ease-in-out;
+    transition: transform 400ms ease-in-out;
 }
 .swiper_slide {
     display: block;
@@ -114,4 +116,22 @@
 }
 .swiper_slide img {
     height: 100%;
+}
+.swiper_slide.prev {
+    margin-left: -100%;
+}
+.swiper_slide.next {
+    margin-right: -100%;
+}
+
+
+/*商品列表*/
+.product_items {
+    text-align: justify;
+}
+
+.product_item {
+    display: inline-block;
+    width: 4rem;
+    height: 6rem;
 }
