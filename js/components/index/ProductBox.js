@@ -14,37 +14,40 @@ class ProductBox extends React.Component {
             <div className="product_items">
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
                 <span className="product_item">
                     <a href="">6666</a>
-                </span><span>&nbsp;</span>
+                </span><span className="white_space">&nbsp;</span>
+                <span className="product_item">
+                    <a href="">6666</a>
+                </span><span className="white_space">&nbsp;</span>
             </div>
         )
     }

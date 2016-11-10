@@ -23,6 +23,10 @@ a:active {
     display: none;
 }
 
+.white_space {
+    font-size: 0;
+}
+
 
 .icon:before {
     content: " ";
