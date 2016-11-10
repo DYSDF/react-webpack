@@ -17,9 +17,10 @@
 }
 
 .tab_body {
-    width: 100%;
     flex-grow: 1;
     -webkit-box-flex: 1.0;
+    width: 100%;
+    overflow: auto;
 }
 
 .tab_bar {

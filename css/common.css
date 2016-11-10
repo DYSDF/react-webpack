@@ -24,7 +24,8 @@ a:active {
 }
 
 .white_space {
-    font-size: 0;
+    height: 0 !important;
+    font-size: 0 !important;
 }
 
 

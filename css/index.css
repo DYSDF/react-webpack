@@ -127,11 +127,15 @@
 
 /*商品列表*/
 .product_items {
-    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-lines: multiple;
+    -webkit-box-pack: justify;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .product_item {
-    display: inline-block;
     width: 4rem;
     height: 6rem;
 }
