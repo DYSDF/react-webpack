@@ -127,15 +127,77 @@
 
 /*商品列表*/
 .product_items {
-    display: -webkit-box;
-    -webkit-box-lines: multiple;
-    -webkit-box-pack: justify;
+     display: -webkit-box;
+     -webkit-box-lines: multiple;
+     -webkit-box-pack: justify;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 0.55rem 0.55rem 0 0.55rem;
 }
 
 .product_item {
-    width: 4rem;
-    height: 6rem;
+    position: relative;
+    display: block;
+    width: 8.5rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.product_item_space {
+    display: block;
+    width: 8.5rem;
+    height: 0;
+    overflow: hidden;
+}
+
+.item_image {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding: 50% 0;
+    overflow: hidden;
+}
+.item_image img {
+    width: 100%;
+    margin-top: -50%;
+}
+
+
+.detail_box {
+    padding: 0.75rem 0.5rem 0.5rem;
+}
+.item_name {
+    height: 2.4em;
+    margin: 0;
+    font-size: 0.6rem;
+    color: #696969;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.sale_price {
+    margin: 0.4rem 0 0;
+    font-size: 0.7rem;
+    color: #ff6256;
+}
+.price {
+    margin: 0.15rem 0 0 0.2em;
+    font-size: 0.5rem;
+    color: #999999;
+    text-decoration: line-through;
+}
+.sale_price:before,
+.price:before {
+    content: "￥";
+}
+
+.shop_bag {
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+    text-align: center;
 }

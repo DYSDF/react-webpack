@@ -20,6 +20,7 @@
     flex-grow: 1;
     -webkit-box-flex: 1.0;
     width: 100%;
+    background-color: #f4f4f4;
     overflow: auto;
 }
 

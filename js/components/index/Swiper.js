@@ -40,6 +40,7 @@ class Swiper extends React.Component {
             isTouch: false,
             touchX: 0,
             timeStamp: Date.now(),
+            timer: 0,
             wrapperWidth: 0
         }
     }
@@ -73,12 +74,14 @@ class Swiper extends React.Component {
             interval = this.props.imgList[this.state.index].interval;
         }
 
-        window.setTimeout(function () {
-            if (!this.state.isTouch) {
-                this.switch2Next();
-            }
-            this.autoPlay();
-        }.bind(this), interval * 1000)
+        this.setState({
+            timer: window.setTimeout(function () {
+                if (!this.state.isTouch) {
+                    this.switch2Next();
+                }
+                this.autoPlay();
+            }.bind(this), interval * 1000)
+        })
     }
 
     checkIndex(time = 0) {
@@ -151,7 +154,7 @@ class Swiper extends React.Component {
     }
 
     componentWillUnmount() {
-        // 移除滑动事件监听
+        window.clearTimeout(this.state.timer);
     }
 
     render() {

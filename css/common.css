@@ -26,6 +26,7 @@ a:active {
 .white_space {
     height: 0 !important;
     font-size: 0 !important;
+    overflow: hidden !important;
 }
 
 
@@ -76,5 +77,9 @@ a:active {
 
 .icon_back:before {
     background-image: url(../image/icon/store_back.png);
+}
+
+.icon_shop_bag:before {
+    background-image: url(../image/icon/store_shop_bag.png);
 }
 
