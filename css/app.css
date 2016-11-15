@@ -17,6 +17,10 @@
 }
 
 .tab_body {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     -webkit-box-flex: 1.0;
     width: 100%;

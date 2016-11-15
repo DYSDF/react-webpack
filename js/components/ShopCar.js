@@ -2,12 +2,16 @@
  * Created by 断崖 on 2016/11/9.
  */
 
-import React from "react"
+import React from "react";
+
+import ShopCarBox from "./shopcar/ShopCar"
 
 class ShopCar extends React.Component {
-    render(){
+    render() {
         return (
-            <div className="tab_body">购物车</div>
+            <div className="tab_body">
+                <ShopCarBox/>
+            </div>
         )
     }
 }

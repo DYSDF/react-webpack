@@ -1,0 +1,42 @@
+
+.shop_car_list {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.product_list {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+}
+
+.count_toolbar {
+    display: flex;
+    display: -webkit-box;
+    flex-grow: 0;
+    -webkit-box-flex: 0;
+    height: 2.2rem;
+}
+
+.check_all {
+    width: 3rem;
+    font-size: 0.55rem;
+    text-align: center;
+}
+
+.total_price {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+}
+
+.settle_btn {
+    flex-grow: 0;
+    -webkit-box-flex: 0;
+    width: 6.85rem;
+    font-size: 0.7rem;
+    text-align: center;
+}
