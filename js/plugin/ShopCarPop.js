@@ -1,23 +1,19 @@
 /**
- * Created by 断崖 on 2016/9/9.
+ * Created by Jay on 16/11/11.
  */
 
-let mask;
 
-const createMask = () => {
-    if (!mask) {
-        mask = document.body.appendChild(document.createElement('div'))
+import MaksPop from "./MaskPop"
+
+
+let shopCar;
+
+
+const createShopCar = () => {
+    if(!shopCar){
+        let el = document.createElement('div');
+        el.className = "shop_car_div";
+        shopCar = document.body.appendChild(el);
     }
-    return mask;
-};
-
-const removeMask = () => {
-    if(mask){
-        document.body.removeChild(mask);
-    }
-};
-
-export default {
-    createMask,
-    removeMask
 }
+

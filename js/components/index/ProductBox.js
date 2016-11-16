@@ -5,11 +5,11 @@
 import React from "react"
 import {Link} from 'react-router';
 
-import ShopCarPop from '../../plugin/ShopCarPop'
+import Mask from '../../plugin/MaskPop'
 
 class ProductItem extends React.Component {
     test(){
-        ShopCarPop.alert("NONONONO");
+        Mask.showMask();
     }
 
     render() {
