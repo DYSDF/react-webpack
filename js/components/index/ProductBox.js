@@ -5,11 +5,73 @@
 import React from "react"
 import {Link} from 'react-router';
 
-import Mask from '../../plugin/MaskPop'
+import ShopCarPop from '../../plugin/ShopCarPop'
+
+let data = {
+    "product": {
+        "id": 666666,
+        "title": "测试",
+        "imgUrl": null,
+        "price": 9998,
+        "salePrice": 998,
+        "items": [
+            {
+                "standard": "290g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1382,
+                        "commodityId": 2183,
+                        "model": "21",
+                        "price": 318.0,
+                        "salePrice": 116.0,
+                        "stock": 333
+                    },
+                    {
+                        "id": 999,
+                        "commodityId": 2183,
+                        "model": "22",
+                        "price": 328.0,
+                        "salePrice": 126.0,
+                        "stock": 333
+                    }
+                ]
+            },
+            {
+                "standard": "280g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1383,
+                        "commodityId": 2183,
+                        "model": "3",
+                        "price": 66.0,
+                        "salePrice": 6.0,
+                        "stock": 111
+                    }
+                ]
+            },
+            {
+                "standard": "500g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1386,
+                        "commodityId": 2183,
+                        "model": "",
+                        "price": 777.0,
+                        "salePrice": 77.0,
+                        "stock": 999
+                    }
+                ]
+            }
+        ]
+    },
+    "onSubmit": function (data) {
+        console.dir(data);
+    }
+};
 
 class ProductItem extends React.Component {
-    test(){
-        Mask.showMask();
+    addShopBag() {
+        ShopCarPop.showShopCar(data);
     }
 
     render() {
@@ -21,7 +83,8 @@ class ProductItem extends React.Component {
                     <p className="sale_price">{this.props.product.salePrice}</p>
                     <p className="price">{this.props.product.price}</p>
                 </div>
-                <Link className="shop_bag" onClick={this.test.bind(this)}><i className="icon icon_shop_bag"/></Link>
+                <Link className="shop_bag" onClick={this.addShopBag.bind(this)}><i
+                    className="icon icon_shop_bag"/></Link>
             </div>
         )
     }
@@ -70,7 +133,6 @@ class ProductBox extends React.Component {
     };
 
     render() {
-
         return (
             <div className="product_items">
                 {

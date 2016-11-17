@@ -33,11 +33,9 @@ const createStyle = () => {
 };
 
 const showMask = () => {
-
     if (!mask) {
         createMask();
     }
-
     mask.style.display = "";
 };
 
@@ -51,5 +49,6 @@ const addClickEvent = (fn = null) => {
 
 
 export default {
-    showMask
+    showMask,
+    hideMask
 }
