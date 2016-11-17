@@ -5,9 +5,9 @@ import { createStore } from 'redux';
 import {Provider} from 'react-redux'
 import {Router, Link, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 
-import Index from './components/index';
-import ShopCar from  "./components/ShopCar";
-import AboutMe from  "./components/AboutMe";
+import Index from './containers/index';
+import ShopCar from  "./containers/ShopCar";
+import AboutMe from  "./containers/AboutMe";
 
 import reducer from './reducers';
 

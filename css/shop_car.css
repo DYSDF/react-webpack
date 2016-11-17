@@ -12,13 +12,123 @@
 .product_list {
     flex-grow: 1;
     -webkit-box-flex: 1;
+    overflow: auto;
+}
+
+.provider_item {
+    margin: 0.5rem 0;
+    background-color: white;
+}
+
+.provider_title {
+    display: flex;
+    align-items: center;
+    display: -webkit-box;
+    -webkit-box-align: center;
+    height: 1.75rem;
+    font-size: 0.8rem;
+    color: #696969;
+}
+
+.provider_title .check_box {
+    margin: 0 0.9rem;
+}
+
+.provider_title .icon_store_icon {
+    margin-right: 0.8rem;
+    font-size: 1rem;
+}
+
+.shop_car_list .product_items {
+    display: flex;
+    flex-direction: column;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin: 0;
+    padding: 0;
+}
+
+.shop_car_list .product_item {
+    position: relative;
+    display: flex;
+    display: -webkit-box;
+    width: 100%;
+}
+
+.shop_car_list .product_check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    width: 2.5rem;
+}
+
+.shop_car_list .product_detail {
+    flex-grow: 1;
+    -webkit-box-flex: 1;
+}
+
+.shop_car_list .product_detail .product_img {
+    float: left;
+    width: 3.5rem;
+    margin-right: 0.4rem;
+    padding: 1.75rem 0;
+    height: 0;
+}
+
+.shop_car_list .product_detail .product_img img {
+    width: 100%;
+    margin-top: -50%;
+}
+
+.shop_car_list .product_detail .product_title {
+    height: 2em;
+    margin: 0.1rem 0;
+    font-size: 0.65rem;
+    color: #555555;
+    overflow: hidden;
+}
+
+.shop_car_list .product_detail .product_selected {
+    margin: 0.4rem 0 0;
+    font-size: 0.5rem;
+    color: #888888;
+}
+
+.shop_car_list .product_items .product_price {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: end;
+    margin-right: 1rem;
+    margin-bottom: 0.6rem;
+    text-align: right;
+}
+
+.shop_car_list .product_items .product_price .old_price {
+    font-size: 0.45rem;
+    color: #a1a1a1;
+    text-decoration: line-through;
+}
+
+.shop_car_list .product_items .product_price .cur_price {
+    font-size: 0.65rem;
+    color: #ff6256;
+}
+
+.shop_car_list .product_delete {
+    position: absolute;
+    top: 0;
+    right: 1rem;
 }
 
 .count_toolbar {
     display: flex;
     display: -webkit-box;
-    flex-grow: 0;
-    -webkit-box-flex: 0;
     height: 2.2rem;
 }
 
@@ -26,17 +136,29 @@
     width: 3rem;
     font-size: 0.55rem;
     text-align: center;
+    margin-top: 0.2rem;
+}
+.check_all .check_box {
+    font-size: 0.55rem;
+    color: #94c5b2;
 }
 
 .total_price {
     flex-grow: 1;
     -webkit-box-flex: 1;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #444444;
+    line-height: 2.2rem;
 }
 
 .settle_btn {
     flex-grow: 0;
     -webkit-box-flex: 0;
     width: 6.85rem;
-    font-size: 0.7rem;
+    line-height: 2.2rem;
+    font-size: 0.8rem;
     text-align: center;
+    color: white;
+    background-color: #ea4c89;
 }

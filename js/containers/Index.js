@@ -4,9 +4,9 @@
 
 import React from "react";
 
-import SearchBar from "./index/SearchBar"
-import Swiper from "./index/Swiper"
-import ProductBox from  "./index/ProductBox"
+import SearchBar from "../components/index/SearchBar"
+import Swiper from "../components/index/Swiper"
+import ProductBox from  "../components/index/ProductBox"
 
 class Index extends React.Component {
     render() {

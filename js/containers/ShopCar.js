@@ -4,7 +4,7 @@
 
 import React from "react";
 
-import ShopCarBox from "./shopcar/ShopCar"
+import ShopCarBox from "../components/shopcar/ShopCar"
 
 class ShopCar extends React.Component {
     render() {
