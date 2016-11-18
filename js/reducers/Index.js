@@ -4,8 +4,8 @@
 
 import {combineReducers} from 'redux'
 
-import shopCar from "./ShopCar";
+import ShopCar from "./ShopCar";
 
 export default combineReducers({
-    shopCar
+    ShopCar
 });

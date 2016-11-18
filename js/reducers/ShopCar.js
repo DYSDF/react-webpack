@@ -15,9 +15,7 @@ export default function shopCar(state = initialState, action) {
         case ADD_TODO:
             return [
                 {
-                    id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-                    completed: false,
-                    text: action.text
+                    id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1
                 },
                 ...state
             ];
