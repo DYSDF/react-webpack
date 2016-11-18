@@ -20,7 +20,7 @@ a:active {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .white_space {
@@ -29,7 +29,7 @@ a:active {
     overflow: hidden !important;
 }
 
-input+.check_box {
+input + .check_box {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-box-align: center;
@@ -38,10 +38,10 @@ input+.check_box {
     flex-direction: column;
     align-items: center;
 
-    line-height: 2em;
+    line-height: 1.6em;
 }
 
-input+.check_box:before {
+input + .check_box:before {
     content: '';
     display: block;
     width: 0.85rem;
@@ -49,19 +49,64 @@ input+.check_box:before {
     border-radius: 50%;
     border: 1px solid #cedde2;
 }
-input:checked+.check_box:before {
-    border: 1px solid #ea4c89;
+
+input:checked + .check_box:before {
+    border: 1px solid transparent;
     background-image: url("../image/icon/store_check.png");
     background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.number_box {
+    display: flex;
+    align-items: center;
+    display: -webkit-box;
+    -webkit-box-align: center;
+}
+
+.number_box .reduce,
+.number_box .plus,
+.number_box .value {
+    display: inline-block;
+    line-height: 1rem;
+    margin: 1px;
+    font-size: 0.6rem;
+    text-align: center;
+    background-color: #E5EFF3;
+    vertical-align: middle;
+}
+
+.number_box .reduce,
+.number_box .plus {
+    width: 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.number_box .value {
+    border: none;
+    width: 1.85rem;
+    padding: 0;
+}
+
+.number_box .reduce {
+
+}
+
+.number_box .plus {
+
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .icon:before {
     content: " ";
-    display: inline-block;
+    display: block;
     width: 1em;
     height: 1em;
-    line-height: 1em;
-    vertical-align: text-top;
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -111,9 +156,11 @@ input:checked+.check_box:before {
 .icon_store_icon:before {
     background-image: url(../image/icon/store_icon.png);
 }
+
 .icon_delete:before {
     background-image: url(../image/icon/store_delete.png);
 }
+
 .icon_dollar:before {
     background-image: url(../image/icon/store_dollar.png);
 }

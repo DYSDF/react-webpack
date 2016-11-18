@@ -135,6 +135,7 @@ class ProductBox extends React.Component {
     render() {
         return (
             <div className="product_items">
+                <div>{this.props.products}</div>
                 {
                     this.props.productList.map(function (product, index) {
                         return (

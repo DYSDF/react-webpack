@@ -35,6 +35,7 @@
 }
 
 .provider_title .icon_store_icon {
+    display: block;
     margin-right: 0.8rem;
     font-size: 1rem;
 }
@@ -46,6 +47,7 @@
     -webkit-box-orient: vertical;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 .shop_car_list .product_item {
@@ -119,24 +121,42 @@
     font-size: 0.65rem;
     color: #ff6256;
 }
-
+.shop_car_list .product_operate{
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    height: 100%;
+    width: 2.5rem;
+    background-color: red;
+    font-size: 0.8rem;
+    color: white;
+    transform: translateX(100%);
+}
 .shop_car_list .product_delete {
     position: absolute;
     top: 0;
     right: 1rem;
+    font-size: 0.85rem;
 }
 
 .count_toolbar {
     display: flex;
     display: -webkit-box;
     height: 2.2rem;
+    background-color: white;
 }
 
 .check_all {
-    width: 3rem;
+    width: 2.5rem;
     font-size: 0.55rem;
     text-align: center;
-    margin-top: 0.2rem;
+    padding-top: 0.2rem;
 }
 .check_all .check_box {
     font-size: 0.55rem;

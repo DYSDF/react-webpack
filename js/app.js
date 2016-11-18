@@ -1,7 +1,7 @@
 // 应用的主入口
 import React from 'react';
 import {render} from 'react-dom';
-import { createStore } from 'redux';
+import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import {Router, Link, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 
@@ -29,7 +29,7 @@ class App extends React.Component {
 }
 
 render(
-    (<Provider store={store}>
+    <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
                 <IndexRedirect to="/index"/>
@@ -38,7 +38,7 @@ render(
                 <Route path="/aboutMe" component={AboutMe}/>
             </Route>
         </Router>
-    </Provider>),
+    </Provider>,
     document.getElementById("container")
 );
 
