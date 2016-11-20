@@ -1,11 +1,8 @@
-/**
- * Created by 断崖 on 2016/11/9.
- */
+import { combineReducers } from 'redux'
+import shopCar from './ShopCar'
 
-import {combineReducers} from 'redux'
-
-import ShopCar from "./ShopCar";
-
-export default combineReducers({
-    ShopCar
+const rootReducer = combineReducers({
+    shopCar
 });
+
+export default rootReducer

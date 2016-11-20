@@ -5,11 +5,11 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import {Router, Link, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
 
-import Index from './containers/index';
+import Index from './containers/Index';
 import ShopCar from  "./containers/ShopCar";
 import AboutMe from  "./containers/AboutMe";
 
-import reducer from './reducers';
+import reducer from "./reducers"
 
 const store = createStore(reducer);
 

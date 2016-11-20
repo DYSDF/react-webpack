@@ -71,7 +71,9 @@ let data = {
 
 class ProductItem extends React.Component {
     addShopBag() {
-        ShopCarPop.showShopCar(data);
+        this.props.actions.addItem(
+            666, "供应商", 999, "规格", "型号", 12.99, 1.99, 123, "商品标题"
+        )
     }
 
     render() {
@@ -135,13 +137,17 @@ class ProductBox extends React.Component {
     render() {
         return (
             <div className="product_items">
-                <div>{this.props.products}</div>
+                <div>
+                    {
+                        Object.keys(this.props.shopCarState).length
+                    }
+                </div>
                 {
                     this.props.productList.map(function (product, index) {
                         return (
-                            <ProductItem product={product} key={index}/>
+                            <ProductItem product={product} key={index} actions={this.props.shopCarActions}/>
                         )
-                    })
+                    }.bind(this))
                 }
                 <div className="product_item_space">&nbsp;</div>
                 <div className="product_item_space">&nbsp;</div>

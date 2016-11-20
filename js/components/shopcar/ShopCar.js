@@ -47,7 +47,7 @@ class ProductItem extends React.Component {
     }
 
     handleTouchEnd(e) {
-        if(this.state.isTouch){
+        if (this.state.isTouch) {
             let translateX = e.nativeEvent.changedTouches[0].clientX - this.state.lastTouch.x;
             if (translateX < this.state.maxTranslateX / 2) {
                 this.refs.product.style.transform = `translateX(${this.state.maxTranslateX}px)`;
@@ -108,7 +108,7 @@ class ProviderItem extends React.Component {
                 </dt>
                 <dd className="product_items">
                     {
-                        [0, 1, 2, 3, 4].map(function (index, item, array) {
+                        [0].map(function (index, item, array) {
                             return (
                                 <ProductItem key={index} index={index}/>
                             )
@@ -126,11 +126,11 @@ class ShopCar extends React.Component {
             <div className="shop_car_list">
                 <div className="product_list">
                     {
-                        [0, 1, 2].map(function (index, item, array) {
+                        Object.keys(this.props.shopCarState).map(function (providerId) {
                             return (
-                                <ProviderItem key={index} index={index}/>
+                                <ProviderItem key={providerId} index={providerId}/>
                             )
-                        })
+                        }.bind(this))
                     }
                 </div>
                 <div className="count_toolbar">
