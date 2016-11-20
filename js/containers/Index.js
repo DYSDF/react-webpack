@@ -3,27 +3,26 @@
  */
 
 import React from "react";
+import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux';
 import * as PropTypes from "react/lib/ReactPropTypes";
-import bindActionCreators from "redux/es/bindActionCreators";
 
 import SearchBar from "../components/index/SearchBar"
 import Swiper from "../components/index/Swiper"
 import ProductBox from  "../components/index/ProductBox"
+import * as ShopCarActions from '../actions/shopCar'
 
-import * as ShopCarActions from "../actions"
-
-const Index = ({shopCarState, actions}) => (
+const Index = ({shopCarState, shopCarActions}) => (
     <div className="tab_body">
         <SearchBar/>
         <Swiper/>
-        <ProductBox products={shopCarState} addToShopCar={actions.addProduct}/>
+        <ProductBox shopCarState={shopCarState} shopCarActions={shopCarActions}/>
     </div>
 );
 
 Index.propTypes = {
-    shopCarState: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    shopCarState: PropTypes.object.isRequired,
+    shopCarActions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -31,7 +30,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(ShopCarActions, dispatch)
+    shopCarActions: bindActionCreators(ShopCarActions, dispatch)
 });
 
 export default connect(
