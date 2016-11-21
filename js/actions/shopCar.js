@@ -1,6 +1,6 @@
 import * as types from '../constants/ShopCarActionTypes'
 
-export const addItem = (providerId, providerName, itemId, standard, model, price, salePrice, productId, title) => ({
+export const addItem = (providerId, providerName, itemId, standard, model, price, salePrice, productId, title, imgUrl, stock) => ({
     type: types.ADD_ITEM,
     product: {
         providerId,
@@ -11,7 +11,9 @@ export const addItem = (providerId, providerName, itemId, standard, model, price
         price,
         salePrice,
         productId,
-        title
+        title,
+        imgUrl,
+        stock
     }
 });
 

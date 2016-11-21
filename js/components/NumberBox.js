@@ -7,14 +7,15 @@ import React from "react"
 
 class NumberBox extends React.Component {
     static defaultProps = {
+        initCount: 1,
         countMax: 13,
-        countMin: 0
+        countMin: 1
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            count: 0
+            count: props.initCount
         };
     }
 
@@ -30,15 +31,11 @@ class NumberBox extends React.Component {
         this.setState({count: newValue});
     }
 
-    handleOnChange(e) {
-        let newValue = this.refs.value.value;
+    handleOnSubmit(e) {
+        let newValue = e.nativeEvent.target.value;
         if (newValue > this.props.countMax) newValue = this.props.countMax;
         if (newValue < this.props.countMin) newValue = this.props.countMin;
         this.setState({count: newValue});
-    }
-
-    componentDidMount() {
-        this.refs.value.value = this.state.count;
     }
 
     componentDidUpdate() {
@@ -48,9 +45,9 @@ class NumberBox extends React.Component {
     render() {
         return (
             <div className="number_box">
-                <input type="numberbox" className="hidden" value={this.state.count}/>
                 <div className="reduce" onClick={this.handleReduce.bind(this)}>-</div>
-                <input ref="value" className="value" type="number" onChange={this.handleOnChange.bind(this)}/>
+                <input ref="value" type="number" className="value" defaultValue={this.state.count} onBlur={this.handleOnSubmit.bind(this)}
+                       onSubmit={this.handleOnSubmit.bind(this)}/>
                 <div className="plus" onClick={this.handleAdd.bind(this)}>+</div>
             </div>
         )

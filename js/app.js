@@ -1,17 +1,23 @@
 // 应用的主入口
-import React from 'react';
+
+/**
+ * Created by 断崖 on 2016/11/21.
+ */
+
+import React from "react";
 import {render} from 'react-dom';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import {Router, Link, Route, IndexRoute, IndexRedirect, browserHistory} from 'react-router';
+import {createStore} from 'redux';
+
+import reducer from "./reducers"
 
 import Index from './containers/Index';
 import ShopCar from  "./containers/ShopCar";
 import AboutMe from  "./containers/AboutMe";
 
-import reducer from "./reducers"
-
 const store = createStore(reducer);
+
 
 class App extends React.Component {
     render() {
@@ -19,15 +25,17 @@ class App extends React.Component {
             <div className="tab_contain">
                 {this.props.children}
                 <div className="tab_bar">
-                    <Link to="/index" className="tab_bar_item" activeClassName="active"><i className="icon icon_index"/>首页</Link>
-                    <Link to="/shopCar" className="tab_bar_item" activeClassName="active"><i className="icon icon_car"/>购物车</Link>
-                    <Link to="/aboutMe" className="tab_bar_item" activeClassName="active"><i className="icon icon_me"/>个人中心</Link>
+                    <Link to="/index" className="tab_bar_item" activeClassName="active"><i
+                        className="icon icon_index"/>首页</Link>
+                    <Link to="/shopCar" className="tab_bar_item" activeClassName="active"><i
+                        className="icon icon_car"/>购物车</Link>
+                    <Link to="/aboutMe" className="tab_bar_item" activeClassName="active"><i
+                        className="icon icon_me"/>个人中心</Link>
                 </div>
             </div>
         )
     }
 }
-
 render(
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -41,10 +49,3 @@ render(
     </Provider>,
     document.getElementById("container")
 );
-
-
-
-
-
-
-

@@ -16,7 +16,7 @@ const Index = ({shopCarState, shopCarActions}) => (
     <div className="tab_body">
         <SearchBar/>
         <Swiper/>
-        <ProductBox shopCarState={shopCarState} shopCarActions={shopCarActions}/>
+        <ProductBox shopCarActions={shopCarActions}/>
     </div>
 );
 

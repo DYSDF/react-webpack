@@ -67,27 +67,28 @@ class ProductItem extends React.Component {
     }
 
     render() {
+        const {productId, product} = this.props;
+
         return (
             <div ref="product" className="product_item"
                  onTouchStart={this.handleTouchStart.bind(this)}
                  onTouchMove={this.handleTouchMove.bind(this)}
                  onTouchEnd={this.handleTouchEnd.bind(this)}>
                 <div className="product_check">
-                    <input id={"product_" + this.props.index} type="checkbox" className="hidden"/>
-                    <label htmlFor={"product_" + this.props.index} className="check_box"/>
+                    <input id={"product_" + productId} type="checkbox" className="hidden"/>
+                    <label htmlFor={"product_" + productId} className="check_box"/>
                 </div>
                 <div className="product_detail">
                     <span className="product_img">
-                        <img src="http://img.wmwbeautysalon.com/group1/M00/0A/DB/Cq3BIVcgeE2Ae7gCAAKk9tsNuMo326.jpg"
-                             alt=""/>
+                        <img src={product.imgUrl} alt=""/>
                     </span>
-                    <p className="product_title">保湿补水面膜</p>
-                    <p className="product_selected">已选：保湿 200ml</p>
-                    <NumberBox/>
+                    <p className="product_title">{product.title}</p>
+                    <p className="product_selected">已选：{product.standard} {product.model}</p>
+                    <NumberBox initCount={product.count} countMax={product.stock}/>
                 </div>
                 <div className="product_price">
-                    <div className="old_price">998.00</div>
-                    <div className="cur_price">98.00</div>
+                    <div className="old_price">{product.price}</div>
+                    <div className="cur_price">{product.salePrice}</div>
                 </div>
                 <div ref="operate" className="product_operate">删除</div>
                 <a href="javascript:;" className="product_delete"><i className="icon icon_delete"/></a>
@@ -98,19 +99,21 @@ class ProductItem extends React.Component {
 
 class ProviderItem extends React.Component {
     render() {
+        const {providerId, providerItem} = this.props;
         return (
             <dl className="provider_item">
                 <dt className="provider_title">
-                    <input id={"provider_" + this.props.index} type="checkbox" className="hidden"/>
-                    <label htmlFor={"provider_" + this.props.index} className="check_box"/>
+                    <input id={"provider_" + providerId} type="checkbox" className="hidden"/>
+                    <label htmlFor={"provider_" + providerId} className="check_box"/>
                     <i className="icon icon_store_icon"/>
-                    <div>品牌供应商</div>
+                    <div>{providerItem.providerName}</div>
                 </dt>
                 <dd className="product_items">
                     {
-                        [0].map(function (index, item, array) {
+                        Object.keys(providerItem.products).map(productId => {
+                            const product = providerItem.products[productId];
                             return (
-                                <ProductItem key={index} index={index}/>
+                                <ProductItem key={productId} productId={productId} product={product}/>
                             )
                         })
                     }
@@ -122,13 +125,15 @@ class ProviderItem extends React.Component {
 
 class ShopCar extends React.Component {
     render() {
+        const {shopCarState} = this.props;
         return (
             <div className="shop_car_list">
                 <div className="product_list">
                     {
-                        Object.keys(this.props.shopCarState).map(function (providerId) {
+                        Object.keys(shopCarState).map(function (providerId) {
+                            const providerItem = shopCarState[providerId];
                             return (
-                                <ProviderItem key={providerId} index={providerId}/>
+                                <ProviderItem key={providerId} providerId={providerId} providerItem={providerItem}/>
                             )
                         }.bind(this))
                     }
