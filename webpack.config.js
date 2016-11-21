@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
     entry: [
         'webpack/hot/only-dev-server',
-        "./js/App.js"
+        "./js/Root.js"
     ],
     output: {
         path: './build',
@@ -33,6 +33,7 @@ module.exports = {
         extensions: ['', '.js', '.json']
     },
     devServer: {
+        historyApiFallback: true,
         hot: true,
         inline: true
     },
