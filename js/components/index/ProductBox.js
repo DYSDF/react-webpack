@@ -5,8 +5,73 @@
 import React from "react"
 import {Link} from 'react-router';
 
+import ShopCarPop from "../../plugin/ShopCarPop";
+
+let data = {
+    "product": {
+        "id": 666666,
+        "title": "测试",
+        "imgUrl": null,
+        "price": 9998,
+        "salePrice": 998,
+        "items": [
+            {
+                "standard": "290g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1382,
+                        "commodityId": 2183,
+                        "model": "21",
+                        "price": 318.0,
+                        "salePrice": 116.0,
+                        "stock": 333
+                    },
+                    {
+                        "id": 999,
+                        "commodityId": 2183,
+                        "model": "22",
+                        "price": 328.0,
+                        "salePrice": 126.0,
+                        "stock": 333
+                    }
+                ]
+            },
+            {
+                "standard": "280g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1383,
+                        "commodityId": 2183,
+                        "model": "3",
+                        "price": 66.0,
+                        "salePrice": 6.0,
+                        "stock": 111
+                    }
+                ]
+            },
+            {
+                "standard": "500g/罐",
+                "itemDataList": [
+                    {
+                        "id": 1386,
+                        "commodityId": 2183,
+                        "model": "",
+                        "price": 777.0,
+                        "salePrice": 77.0,
+                        "stock": 999
+                    }
+                ]
+            }
+        ]
+    },
+    "onSubmit": function (data) {
+        console.dir(data);
+    }
+};
+
 class ProductItem extends React.Component {
     addShopBag() {
+        ShopCarPop.showShopCar(data);
         // providerId, providerName, itemId, standard, model, price, salePrice, productId, title, imgUrl, stock
         let product = this.props.product;
         this.props.actions.addItem(
@@ -40,7 +105,6 @@ class ProductItem extends React.Component {
     }
 }
 
-
 class ProductBox extends React.Component {
     static defaultProps = {
         productList: [
@@ -57,7 +121,7 @@ class ProductBox extends React.Component {
                         "standard": "290g/罐",
                         "itemDataList": [
                             {
-                                "id": 1382,
+                                "id": 1111,
                                 "commodityId": 2183,
                                 "model": "21",
                                 "price": 318.0,
@@ -65,7 +129,7 @@ class ProductBox extends React.Component {
                                 "stock": 333
                             },
                             {
-                                "id": 999,
+                                "id": 1112,
                                 "commodityId": 2183,
                                 "model": "22",
                                 "price": 328.0,
@@ -78,7 +142,7 @@ class ProductBox extends React.Component {
                         "standard": "280g/罐",
                         "itemDataList": [
                             {
-                                "id": 1383,
+                                "id": 1113,
                                 "commodityId": 2183,
                                 "model": "3",
                                 "price": 66.0,
@@ -91,7 +155,7 @@ class ProductBox extends React.Component {
                         "standard": "500g/罐",
                         "itemDataList": [
                             {
-                                "id": 1386,
+                                "id": 1114,
                                 "commodityId": 2183,
                                 "model": "",
                                 "price": 777.0,
@@ -115,7 +179,7 @@ class ProductBox extends React.Component {
                         "standard": "290g/罐",
                         "itemDataList": [
                             {
-                                "id": 1382,
+                                "id": 2221,
                                 "commodityId": 2183,
                                 "model": "21",
                                 "price": 318.0,
@@ -123,7 +187,7 @@ class ProductBox extends React.Component {
                                 "stock": 333
                             },
                             {
-                                "id": 999,
+                                "id": 2222,
                                 "commodityId": 2183,
                                 "model": "22",
                                 "price": 328.0,
@@ -136,7 +200,7 @@ class ProductBox extends React.Component {
                         "standard": "280g/罐",
                         "itemDataList": [
                             {
-                                "id": 1383,
+                                "id": 2223,
                                 "commodityId": 2183,
                                 "model": "3",
                                 "price": 66.0,
@@ -149,7 +213,7 @@ class ProductBox extends React.Component {
                         "standard": "500g/罐",
                         "itemDataList": [
                             {
-                                "id": 1386,
+                                "id": 2224,
                                 "commodityId": 2183,
                                 "model": "",
                                 "price": 777.0,
@@ -173,7 +237,7 @@ class ProductBox extends React.Component {
                         "standard": "290g/罐",
                         "itemDataList": [
                             {
-                                "id": 1382,
+                                "id": 3331,
                                 "commodityId": 2183,
                                 "model": "21",
                                 "price": 318.0,
@@ -181,7 +245,7 @@ class ProductBox extends React.Component {
                                 "stock": 333
                             },
                             {
-                                "id": 999,
+                                "id": 3332,
                                 "commodityId": 2183,
                                 "model": "22",
                                 "price": 328.0,
@@ -194,7 +258,7 @@ class ProductBox extends React.Component {
                         "standard": "280g/罐",
                         "itemDataList": [
                             {
-                                "id": 1383,
+                                "id": 3333,
                                 "commodityId": 2183,
                                 "model": "3",
                                 "price": 66.0,
@@ -207,7 +271,7 @@ class ProductBox extends React.Component {
                         "standard": "500g/罐",
                         "itemDataList": [
                             {
-                                "id": 1386,
+                                "id": 3334,
                                 "commodityId": 2183,
                                 "model": "",
                                 "price": 777.0,
@@ -231,7 +295,7 @@ class ProductBox extends React.Component {
                         "standard": "290g/罐",
                         "itemDataList": [
                             {
-                                "id": 1382,
+                                "id": 4441,
                                 "commodityId": 2183,
                                 "model": "21",
                                 "price": 318.0,
@@ -239,7 +303,7 @@ class ProductBox extends React.Component {
                                 "stock": 333
                             },
                             {
-                                "id": 999,
+                                "id": 4442,
                                 "commodityId": 2183,
                                 "model": "22",
                                 "price": 328.0,
@@ -252,7 +316,7 @@ class ProductBox extends React.Component {
                         "standard": "280g/罐",
                         "itemDataList": [
                             {
-                                "id": 1383,
+                                "id": 4443,
                                 "commodityId": 2183,
                                 "model": "3",
                                 "price": 66.0,
@@ -265,7 +329,7 @@ class ProductBox extends React.Component {
                         "standard": "500g/罐",
                         "itemDataList": [
                             {
-                                "id": 1386,
+                                "id": 4444,
                                 "commodityId": 2183,
                                 "model": "",
                                 "price": 777.0,
@@ -289,7 +353,7 @@ class ProductBox extends React.Component {
                         "standard": "290g/罐",
                         "itemDataList": [
                             {
-                                "id": 1382,
+                                "id": 5551,
                                 "commodityId": 2183,
                                 "model": "21",
                                 "price": 318.0,
@@ -297,7 +361,7 @@ class ProductBox extends React.Component {
                                 "stock": 333
                             },
                             {
-                                "id": 999,
+                                "id": 5552,
                                 "commodityId": 2183,
                                 "model": "22",
                                 "price": 328.0,
@@ -310,7 +374,7 @@ class ProductBox extends React.Component {
                         "standard": "280g/罐",
                         "itemDataList": [
                             {
-                                "id": 1383,
+                                "id": 5553,
                                 "commodityId": 2183,
                                 "model": "3",
                                 "price": 66.0,
@@ -323,7 +387,7 @@ class ProductBox extends React.Component {
                         "standard": "500g/罐",
                         "itemDataList": [
                             {
-                                "id": 1386,
+                                "id": 5554,
                                 "commodityId": 2183,
                                 "model": "",
                                 "price": 777.0,

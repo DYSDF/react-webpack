@@ -65,7 +65,7 @@ class Swiper extends React.Component {
     }
 
     autoPlay() {
-        var interval;
+        let interval;
         if (this.state.index < 0) {
             interval = this.props.imgList.slice(-1)[0].interval;
         } else if (this.state.index >= this.props.imgList.length) {
@@ -181,9 +181,10 @@ class Swiper extends React.Component {
                     {
                         img_list.map(function (item, index, array) {
                             return (
-                                <span key={index} className="swiper_pagination-bullet"/>
+                                <span key={index}
+                                      className={"swiper_pagination-bullet" + (this.state.index == index ? " active" : "")}/>
                             )
-                        })
+                        }.bind(this))
                     }
                 </div>
             </div>

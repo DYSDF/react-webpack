@@ -60,6 +60,7 @@ const createShopCar = (product) => {
 const showShopCar = (data) => {
     if (!shopCar) {
         let el = createShopCar(data.product);
+
         shopCar = document.body.appendChild(el);
     }
     MaskPop.showMask();

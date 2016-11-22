@@ -97,6 +97,38 @@ input:checked + .check_box:before {
 
 }
 
+
+.shop_car_pop {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 10000;
+}
+
+.shop_car_pop .product_detail {
+    position: relative;
+    margin: -0.9rem 1.25rem 0;
+    padding-top: 0.9rem;
+    overflow: auto;
+}
+
+.shop_car_pop .product_detail .product_img {
+    float: left;
+    width: 5rem;
+    height: 5rem;
+    margin-top: -0.9rem;
+    margin-right: -5rem;
+    border: 1px solid #C7C7C7;
+    background-color: white;
+    box-sizing: border-box;
+}
+.shop_car_pop .product_detail .product_detail_info {
+    margin-left: 5rem;
+}
+
+
 .icon {
     display: inline-block;
     vertical-align: middle;

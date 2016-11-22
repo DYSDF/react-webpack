@@ -10,13 +10,13 @@ import {
 
 const deepCopy = (source) => { // JavaScript居然没有深拷贝。。。
     let result;
-    if(source.constructor == Array){
-        result=[];
+    if (source.constructor == Array) {
+        result = [];
     } else {
-        result={};
+        result = {};
     }
     Object.keys(source).forEach(key => {
-        result[key] = typeof source[key]==='object' ? deepCopy(source[key]) : source[key];
+        result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key];
     });
     return result;
 };
@@ -44,9 +44,9 @@ export default function shopCar(state = initialState, action) {
     let stateCopy = deepCopy(state);
     switch (action.type) {
         case ADD_ITEM:
-            if(stateCopy[action.product.providerId]){
+            if (stateCopy[action.product.providerId]) {
                 let products = stateCopy[action.product.providerId].products;
-                if(products[action.product.itemId]){
+                if (products[action.product.itemId]) {
                     let product = products[action.product.itemId];
                     product.count = product.count + 1
                 } else {
@@ -85,23 +85,21 @@ export default function shopCar(state = initialState, action) {
             return stateCopy;
 
         case DELETE_ITEM:
-            if(stateCopy[action.product.providerId]){
+            if (stateCopy[action.product.providerId]) {
                 let products = stateCopy[action.product.providerId].products;
-                if(products[action.product.itemId]){
-                    let product = products[action.product.itemId];
-                    if(product[count] > 1){
-                        delete products[action.product.itemId]
-                    } else {
-                        product.count = product.count - 1
+                if (products[action.product.itemId]) {
+                    delete products[action.product.itemId];
+                    if (Object.keys(products).length === 0) {
+                        delete stateCopy[action.product.providerId];
                     }
                 }
             }
             return stateCopy;
 
         case EDIT_ITEM:
-            if(stateCopy[action.product.providerId]){
+            if (stateCopy[action.product.providerId]) {
                 let products = stateCopy[action.product.providerId].products;
-                if(products[action.product.itemId]){
+                if (products[action.product.itemId]) {
                     let product = products[action.product.itemId];
                     product.count = action.product.count
                 }
@@ -109,9 +107,9 @@ export default function shopCar(state = initialState, action) {
             return stateCopy;
 
         case SELECT_ITEM:
-            if(stateCopy[action.product.providerId]){
+            if (stateCopy[action.product.providerId]) {
                 let products = stateCopy[action.product.providerId].products;
-                if(products[action.product.itemId]){
+                if (products[action.product.itemId]) {
                     let product = products[action.product.itemId];
                     product.selected = !product.selected;
                 }
@@ -119,8 +117,8 @@ export default function shopCar(state = initialState, action) {
             return stateCopy;
 
         case SELECT_ALL:
-            if(action.product.providerId){
-                if(stateCopy[action.product.providerId]){
+            if (action.product.providerId) {
+                if (stateCopy[action.product.providerId]) {
                     let products = stateCopy[action.product.providerId].products;
                     Object.keys(products).forEach(productId => {
                         products[productId].selected = true;
@@ -137,8 +135,8 @@ export default function shopCar(state = initialState, action) {
             return stateCopy;
 
         case CLEAR_SELECTED:
-            if(action.product.providerId){
-                if(stateCopy[action.product.providerId]){
+            if (action.product.providerId) {
+                if (stateCopy[action.product.providerId]) {
                     let products = stateCopy[action.product.providerId].products;
                     Object.keys(products).forEach(productId => {
                         products[productId].selected = false;
