@@ -5,36 +5,30 @@
 let mask;
 let style;
 
-const createMask = () => {
+const createMask = ({onClose}) => {
     createStyle();
 
     let el = document.createElement('div');
     el.className = "mask_div";
     mask = document.body.appendChild(el);
 
-    addClickEvent(hideMask.bind(this));
+    addClickEvent(hideMask);
+    addOneClickEvent(onClose);
 };
-
-const removeMask = () => {
-    if (mask) {
-        document.body.removeChild(mask);
-    }
-};
-
 
 const createStyle = () => {
     if (!style) {
         let css = ".mask_div { position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: black;opacity: 0.8;z-index: 9999 }";
         let el = document.createElement('style');
         el.innerHTML = css;
-        style = document.head.appendChild(el)
+        style = document.head.appendChild(el);
     }
     return style;
 };
 
-const showMask = () => {
+const showMask = (args) => {
     if (!mask) {
-        createMask();
+        createMask(args);
     }
     mask.style.display = "";
 };
@@ -45,6 +39,10 @@ const hideMask = () => {
 
 const addClickEvent = (fn = null) => {
     mask.addEventListener("click", fn);
+};
+
+const addOneClickEvent = (fn = null) => {
+
 };
 
 

@@ -2,11 +2,15 @@
  * Created by Jay on 16/11/11.
  */
 import React from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
 
-import MaskPop from "./MaskPop"
+import MaskPop from "./MaskPop";
+import NumberBox from "../components/NumberBox";
 
 let shopCar;
+let modelList = {};
+let hashMap = {};
+let submitFn;
 
 const StrToNode = (str = "") => {
     let parentNode = document.createElement("div");
@@ -14,17 +18,41 @@ const StrToNode = (str = "") => {
     return parentNode.childNodes;
 };
 
-const renderModelTemplate = () => {
-    return "";
+const renderModelTemplate = (list) => {
+    let html = "";
+    list.forEach((item, index) => {
+        if (item) {
+            html += `<span class="radio_box">
+                        <input type="radio" id="model-${index}" name="model" value="${item}">
+                        <label for="model-${index}">${item}</label>
+                    </span>`;
+        }
+    });
+
+    if (html) {
+        return `<dt>型号</dt>
+                <dd class="models">${html}</dd>`;
+    } else {
+        return "";
+    }
 };
 
-const renderStandardTemplate = () => {
-    return "";
+const renderStandardTemplate = (list) => {
+    let html = "";
+    list.forEach((item, index) => {
+        html += `<span class="radio_box">
+                    <input type="radio" id="standard-${index}" name="standard" value="${item}">
+                    <label for="standard-${index}">${item}</label>
+                </span>`;
+    });
+
+    return `<dt>规格</dt>
+            <dd class="standards">${html}</dd>`;
 };
 
 const renderShopCarTemplate = (product) => {
     return `<div class="shop_car_pop">
-                <input type="hidden" name="productId" value="${product.id}">
+                <input type="hidden" name="productId" value="${product.commodityId}">
                 <div class="product_detail">
                     <div class="product_img">
                         <img src="${product.imgUrl}" alt="">
@@ -36,35 +64,74 @@ const renderShopCarTemplate = (product) => {
                     </div>
                 </div>
                 <div class="product_items">
-                    <div class="item_box standards_box">${renderStandardTemplate()}</div>
-                    <div class="item_box models_box">${renderModelTemplate()}</div>
-                    <div class="item_box">
-                        <div>数量</div>
-                        <div>
-                            <span class="number_box">
-                                <input class="select_number" type="number" name="number" min="1" max="99" value="1">
-                            </span>
-                        </div>
+                    <div class="item_box standards_box">${renderStandardTemplate(Object.keys(hashMap))}</div>
+                    <div class="item_box models_box">${renderModelTemplate(Object.keys(modelList))}</div>
+                    <div class="item_box shop_count">
+                        <input type="hidden" name="shopCount" value="0">
+                        <dt>数量</dt>
+                        <dd></dd>
                     </div>
                 </div>
                 <a href="javascript:;" class="submit_btn">加入购物车</a>
-                <a href="javascript:;" class="close_btn"></a>
+                <a href="javascript:;" class="close_btn"><i class="icon icon_close"></i></a>
             </div>`;
 };
 
-const createShopCar = (product) => {
-    let htmlStr = renderShopCarTemplate(product);
-    return StrToNode(htmlStr)[0];
+const createHashMap = (product) => {
+    try {
+        product.items.forEach(standard => {
+            standard.itemDataList.forEach(model => {
+                if (!hashMap[standard.standard]) {
+                    hashMap[standard.standard] = {};
+                }
+                modelList[model.model] = {...model};
+                hashMap[standard.standard][model.model] = {...model, standard: standard.standard};
+            })
+        });
+    } catch (e) {
+        return false;
+    }
+    return true;
 };
 
-const showShopCar = (data) => {
-    if (!shopCar) {
-        let el = createShopCar(data.product);
-
-        shopCar = document.body.appendChild(el);
+const createShopCar = (product) => {
+    if (createHashMap(product)) {
+        let htmlStr = renderShopCarTemplate(product);
+        return StrToNode(htmlStr)[0];
+    } else {
+        return "";
     }
-    MaskPop.showMask();
+};
+
+const showShopCar = ({product, onSubmit} = {}) => {
+    if (!shopCar) {
+        let el = createShopCar(product);
+        shopCar = document.body.appendChild(el);
+        // document.querySelector(".shop_car_pop .submit_btn").onclick = onSubmit;
+        document.querySelector(".shop_car_pop .close_btn").onclick = closeShopCar;
+    }
+
+    ReactDOM.render(
+        React.createElement(NumberBox, {
+            initCount: 1,
+            countMax: 99,
+            countMin: 1
+        }),
+        document.querySelector(".shop_car_pop .shop_count")
+    );
+
+    MaskPop.showMask({
+        onClose: () => {
+            console.log("OK")
+        }
+    });
     shopCar.style.display = "";
+};
+
+const closeShopCar = () => {
+    document.body.removeChild(shopCar);
+    shopCar = null;
+    MaskPop.hideMask();
 };
 
 export default {

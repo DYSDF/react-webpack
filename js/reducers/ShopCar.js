@@ -48,33 +48,19 @@ export default function shopCar(state = initialState, action) {
                 let products = stateCopy[action.product.providerId].products;
                 if (products[action.product.itemId]) {
                     let product = products[action.product.itemId];
-                    product.count = product.count + 1
+                    product.count = product.count * 1 + 1
                 } else {
                     products[action.product.itemId] = {
-                        standard: action.product.standard,
-                        model: action.product.model,
-                        price: action.product.price,
-                        salePrice: action.product.salePrice,
-                        stock: action.product.stock,
+                        ...action.product,
                         count: 1,
-                        productId: action.product.productId,
-                        title: action.product.title,
-                        imgUrl: action.product.imgUrl,
                         selected: false
                     }
                 }
             } else {
                 let products = {};
                 products[action.product.itemId] = {
-                    standard: action.product.standard,
-                    model: action.product.model,
-                    price: action.product.price,
-                    salePrice: action.product.salePrice,
-                    stock: action.product.stock,
+                    ...action.product,
                     count: 1,
-                    productId: action.product.productId,
-                    title: action.product.title,
-                    imgUrl: action.product.imgUrl,
                     selected: false
                 };
                 stateCopy[action.product.providerId] = {

@@ -13,23 +13,40 @@ class NumberBox extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            count: props.initCount
+        }
     }
 
     handleAdd() {
-        let newValue = this.props.initCount + 1;
+        let newValue = this.state.count + 1;
         if (newValue > this.props.countMax) newValue = this.props.countMax;
         if (newValue < this.props.countMin) newValue = this.props.countMin;
 
-        const {onChange} = this.props;
+        this.setState({
+            count: newValue
+        });
+
+        const {
+            onChange = () => {
+            }
+        } = this.props;
         onChange(newValue);
     }
 
     handleReduce() {
-        let newValue = this.props.initCount - 1;
+        let newValue = this.state.count - 1;
         if (newValue > this.props.countMax) newValue = this.props.countMax;
         if (newValue < this.props.countMin) newValue = this.props.countMin;
 
-        const {onChange} = this.props;
+        this.setState({
+            count: newValue
+        });
+
+        const {
+            onChange = () => {
+            }
+        } = this.props;
         onChange(newValue);
     }
 
@@ -38,20 +55,26 @@ class NumberBox extends React.Component {
         if (newValue > this.props.countMax) newValue = this.props.countMax;
         if (newValue < this.props.countMin) newValue = this.props.countMin;
 
-        const {onChange} = this.props;
+        this.setState({
+            count: newValue
+        });
+
+        const {
+            onChange = () => {
+            }
+        } = this.props;
         onChange(newValue);
     }
 
     componentDidUpdate() {
-        this.refs.value.value = this.props.initCount;
+        this.refs.value.value = this.state.count;
     }
 
     render() {
-        const {initCount} = this.props;
         return (
             <div className="number_box">
                 <div className="reduce" onClick={this.handleReduce.bind(this)}>-</div>
-                <input ref="value" type="number" className="value" defaultValue={initCount}
+                <input ref="value" type="number" className="value" defaultValue={this.state.count}
                        onBlur={this.handleOnSubmit.bind(this)} onSubmit={this.handleOnSubmit.bind(this)}/>
                 <div className="plus" onClick={this.handleAdd.bind(this)}>+</div>
             </div>

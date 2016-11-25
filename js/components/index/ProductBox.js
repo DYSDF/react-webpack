@@ -71,22 +71,27 @@ let data = {
 
 class ProductItem extends React.Component {
     addShopBag() {
-        ShopCarPop.showShopCar(data);
         // providerId, providerName, itemId, standard, model, price, salePrice, productId, title, imgUrl, stock
         let product = this.props.product;
-        this.props.actions.addItem(
-            product.providerId,
-            product.providerName,
-            product.commodityId,
-            "规格",
-            "型号",
-            "16.99",
-            "9.99",
-            product.commodityId,
-            product.title,
-            product.imgUrl,
-            99
-        )
+        // this.props.actions.addItem(
+        //     product.providerId,
+        //     product.providerName,
+        //     product.commodityId,
+        //     "规格",
+        //     "型号",
+        //     "16.99",
+        //     "9.99",
+        //     product.commodityId,
+        //     product.title,
+        //     product.imgUrl,
+        //     99
+        // );
+        ShopCarPop.showShopCar({
+            product: product,
+            onSubmit: () => {
+                console.log(this);
+            }
+        });
     }
 
     render() {
