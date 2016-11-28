@@ -73,27 +73,32 @@ class ProductItem extends React.Component {
     addShopBag() {
         // providerId, providerName, itemId, standard, model, price, salePrice, productId, title, imgUrl, stock
         let product = this.props.product;
-        // this.props.actions.addItem(
-        //     product.providerId,
-        //     product.providerName,
-        //     product.commodityId,
-        //     "规格",
-        //     "型号",
-        //     "16.99",
-        //     "9.99",
-        //     product.commodityId,
-        //     product.title,
-        //     product.imgUrl,
-        //     99
-        // );
+        const {addItem, editItem} = this.props.actions;
         ShopCarPop.showShopCar({
             product: product,
             defaultSelect: {
                 standard: "500g/罐",
                 model: ""
             },
-            onSubmit: () => {
-                console.log("KOK");
+            onSubmit: (data) => {
+                addItem(
+                    data.providerId,
+                    data.providerName,
+                    data.id,
+                    data.standard,
+                    data.model,
+                    data.price,
+                    data.salePrice,
+                    data.commodityId,
+                    data.title,
+                    data.imgUrl,
+                    data.stock
+                );
+                editItem(
+                    data.providerId,
+                    data.id,
+                    data.count
+                );
                 ShopCarPop.closeShopCar();
             }
         });

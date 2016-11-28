@@ -156,12 +156,12 @@ class ProductItem extends React.Component {
                     </span>
                     <p className="product_title">{product.title}</p>
                     <p className="product_selected">已选：{product.standard} {product.model}</p>
-                    <NumberBox initCount={product.count} countMax={product.stock}
+                    <NumberBox initCount={product.count} countMax={product.stock > 99 ? 99 : product.stock}
                                onChange={this.handleNumberBoxChange.bind(this)}/>
                 </div>
                 <div className="product_price">
-                    <div className="old_price">{product.price}</div>
-                    <div className="cur_price">{product.salePrice}</div>
+                    <div className="old_price">{product.price.toFixed(2)}</div>
+                    <div className="cur_price">{product.salePrice.toFixed(2)}</div>
                 </div>
                 <div ref="operate" className="product_operate" onTouchStart={this.handleDeleteProduct.bind(this)}>删除
                 </div>

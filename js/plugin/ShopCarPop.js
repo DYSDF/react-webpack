@@ -84,7 +84,14 @@ const createHashMap = (product) => {
                     hashMap[standard.standard] = {};
                 }
                 modelList[model.model] = {...model};
-                hashMap[standard.standard][model.model] = {...model, standard: standard.standard};
+                hashMap[standard.standard][model.model] = {
+                    ...model,
+                    standard: standard.standard,
+                    providerId: product.providerId,
+                    providerName: product.providerName,
+                    title: product.title,
+                    imgUrl: product.imgUrl
+                };
             })
         });
     } catch (e) {
@@ -103,7 +110,14 @@ const createShopCar = (product) => {
 };
 
 const onSubmitFn = (callbackObj) => {
-    callbackObj();
+    let standardValue = document.querySelector(".shop_car_pop input[name='standard']:checked").value;
+    let modelValue = document.querySelector(".shop_car_pop input[name='model']:checked") ? document.querySelector(".shop_car_pop input[name='model']:checked").value : "";
+    let count = parseInt(document.querySelector(".shop_car_pop .number_box .value").value) || 1;
+
+    callbackObj({
+        ...hashMap[standardValue][modelValue],
+        count: count
+    });
 };
 
 const setCheckEnable = (defaultSelect) => {
