@@ -88,8 +88,13 @@ class ProductItem extends React.Component {
         // );
         ShopCarPop.showShopCar({
             product: product,
+            defaultSelect: {
+                standard: "500g/罐",
+                model: ""
+            },
             onSubmit: () => {
-                console.log(this);
+                console.log("KOK");
+                ShopCarPop.closeShopCar();
             }
         });
     }

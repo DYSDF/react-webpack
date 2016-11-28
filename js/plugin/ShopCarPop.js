@@ -10,7 +10,6 @@ import NumberBox from "../components/NumberBox";
 let shopCar;
 let modelList = {};
 let hashMap = {};
-let submitFn;
 
 const StrToNode = (str = "") => {
     let parentNode = document.createElement("div");
@@ -103,13 +102,55 @@ const createShopCar = (product) => {
     }
 };
 
-const showShopCar = ({product, onSubmit} = {}) => {
-    if (!shopCar) {
-        let el = createShopCar(product);
-        shopCar = document.body.appendChild(el);
-        // document.querySelector(".shop_car_pop .submit_btn").onclick = onSubmit;
-        document.querySelector(".shop_car_pop .close_btn").onclick = closeShopCar;
+const onSubmitFn = (callbackObj) => {
+    callbackObj();
+};
+
+const setCheckEnable = (defaultSelect) => {
+    if (defaultSelect) {
+        if (defaultSelect.standard) {
+            document.querySelector(".shop_car_pop input[value='" + defaultSelect.standard + "']").checked = true;
+        } else {
+            document.querySelector(".shop_car_pop input[name='standard']").checked = true;
+        }
     }
+
+    let standardValue = document.querySelector(".shop_car_pop input[name='standard']:checked").value;
+    window.setTimeout(function () {
+        [].forEach.call(document.querySelectorAll(".shop_car_pop input[name='model']"), (item) => {
+            let modelValue = item.value;
+            if (hashMap[standardValue]) {
+                if (hashMap[standardValue][modelValue]) {
+                    item.disabled = false;
+                } else {
+                    item.checked = "";
+                    item.disabled = true;
+                }
+            } else {
+                item.checked = "";
+                item.disabled = true;
+            }
+        });
+
+        if (defaultSelect && defaultSelect.model) {
+            document.querySelector(".shop_car_pop input[name='model'][value='" + defaultSelect.model + "']").checked = true;
+        } else {
+            if (!document.querySelector(".shop_car_pop input[name='model']:checked")) {
+                let list = document.querySelectorAll(".shop_car_pop input[name='model']");
+                for (let i = 0; i < list.length; i++) {
+                    if (!list[i].disabled) {
+                        list[i].checked = "checked";
+                        return;
+                    }
+                }
+            }
+        }
+    }.bind(this), 0)
+};
+
+const initFn = ({product, defaultSelect = {}, onSubmit} = {}) => {
+    let el = createShopCar(product);
+    shopCar = document.body.appendChild(el);
 
     ReactDOM.render(
         React.createElement(NumberBox, {
@@ -120,20 +161,42 @@ const showShopCar = ({product, onSubmit} = {}) => {
         document.querySelector(".shop_car_pop .shop_count")
     );
 
+    [].forEach.call(document.querySelectorAll(".shop_car_pop input"), (item) => {
+        item.onclick = () => {
+            setCheckEnable();
+        };
+    });
+    setCheckEnable(defaultSelect);
+
+    document.querySelector(".shop_car_pop .submit_btn").onclick = () => {
+        return onSubmitFn(onSubmit);
+    };
+
+    document.querySelector(".shop_car_pop .close_btn").onclick = closeShopCar;
+
     MaskPop.showMask({
         onClose: () => {
-            console.log("OK")
+            closeShopCar();
         }
     });
+};
+
+const showShopCar = (args) => {
+    if (!shopCar) {
+        initFn(args);
+    }
     shopCar.style.display = "";
 };
 
 const closeShopCar = () => {
-    document.body.removeChild(shopCar);
-    shopCar = null;
+    if (shopCar) {
+        document.body.removeChild(shopCar);
+        shopCar = null;
+    }
     MaskPop.hideMask();
 };
 
 export default {
-    showShopCar
+    showShopCar,
+    closeShopCar
 }

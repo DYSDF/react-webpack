@@ -5,7 +5,7 @@
 let mask;
 let style;
 
-const createMask = ({onClose}) => {
+const createMask = () => {
     createStyle();
 
     let el = document.createElement('div');
@@ -13,7 +13,6 @@ const createMask = ({onClose}) => {
     mask = document.body.appendChild(el);
 
     addClickEvent(hideMask);
-    addOneClickEvent(onClose);
 };
 
 const createStyle = () => {
@@ -26,10 +25,11 @@ const createStyle = () => {
     return style;
 };
 
-const showMask = (args) => {
+const showMask = ({onClose}) => {
     if (!mask) {
-        createMask(args);
+        createMask();
     }
+    addOneClickEvent(onClose);
     mask.style.display = "";
 };
 
@@ -41,8 +41,12 @@ const addClickEvent = (fn = null) => {
     mask.addEventListener("click", fn);
 };
 
-const addOneClickEvent = (fn = null) => {
-
+const addOneClickEvent = (fn = () => {}) => {
+    const oneEventFn = () => {
+        fn();
+        mask.removeEventListener("click", oneEventFn);
+    };
+    mask.addEventListener("click", oneEventFn);
 };
 
 
